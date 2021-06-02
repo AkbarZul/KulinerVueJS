@@ -1,21 +1,49 @@
 <template>
-  <div class="row mt-5">
-    <div class="col ml-3">
-      <div class="d-flex h-100">
-        <div class="justify-content-center align-self-center">
-          <h2>
-            <strong>Delicious Food Menu, </strong> <br />
-            in Your Gadget
-          </h2>
-          <p>Ayo segera pilih dan pesan makanan favorit Anda</p>
-          <router-link class="btn btn-lg btn-success" to="/foods">
-            <b-icon-arrow-right></b-icon-arrow-right>Pesan
-          </router-link>
+  <div class="hero">
+    <!-- desktop -->
+    <div class="d-none d-md-block">
+      <div class="row mt-5">
+        <div class="col ml-3">
+          <div class="d-flex h-100">
+            <div class="justify-content-center align-self-center">
+              <h2>
+                <strong>Delicious Food Menu, </strong> <br />
+                in Your Gadget
+              </h2>
+              <p>Ayo segera pilih dan pesan makanan favorit Anda</p>
+              <router-link class="btn btn-lg btn-success" to="/foods">
+                <b-icon-arrow-right></b-icon-arrow-right>Pesan
+              </router-link>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <img src="../assets/images/hero.png" width="100%" />
         </div>
       </div>
     </div>
-    <div class="col">
-      <img src="../assets/images/hero.png" width="100%" />
+
+    <!-- mobile -->
+    <div class="d-sm-block d-md-none">
+      <div class="row mt-5">
+        <div class="col-md-6 mb-3">
+          <img src="../assets/images/hero.png" width="100%" />
+        </div>
+        <div class="col-md-6 ml-3">
+          <div class="d-flex h-100">
+            <div class="justify-content-center align-self-center">
+              <h2>
+                <strong>Delicious Food Menu, </strong> <br />
+                in Your Gadget
+              </h2>
+              <p>Ayo segera pilih dan pesan makanan favorit Anda</p>
+              <router-link class="btn btn-lg btn-success" to="/foods">
+                <b-icon-arrow-right></b-icon-arrow-right>Pesan
+              </router-link>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
