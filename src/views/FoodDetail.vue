@@ -39,25 +39,25 @@
             Harga :
             <strong>Rp. {{ products.harga }}</strong>
           </h4>
-          <form class="mt-4">
+          <form class="mt-4" v-on:submit.prevent>
             <div class="form-group">
               <label for="jumlah_pemesanan">Jumlah Pesan</label>
               <input
                 type="number"
                 class="form-control"
-                
+                v-model="pesan.jumlah_pemesanan"
               />
             </div>
             <div class="form-group">
               <label for="keterangan">Keterangan</label>
               <textarea
-                
+                v-model="pesan.keterangan"
                 class="form-control"
                 placeholder="Keterangan spt : Pedes, Nasi Setengah .."
               ></textarea>
             </div>
 
-            <button type="submit" class="btn btn-success">
+            <button type="submit" class="btn btn-success" @click="pemesanan">
               <b-icon-cart></b-icon-cart>Pesan
             </button>
           </form>
@@ -79,11 +79,41 @@ export default {
   data() {
     return {
       products: {},
+      pesan: {},
     };
   },
   methods: {
     setProducts(data) {
       this.products = data;
+    },
+    pemesanan() {
+      if (this.pesan.jumlah_pemesanan) {
+          // ini untuk push ke halaman keranjang
+          this.$router.push({ path: "/keranjang" })
+          // ini untuk membawa data dari product 
+        this.pesan.products = this.products;
+        axios
+          .post("http://localhost:3000/keranjangs", this.pesan)
+          .then(() => {
+            console.log("berhasil");
+            this.$toast.success("Sukses Memesan", {
+              type: "success",
+              position: "top-right",
+              duration: 3000,
+              dismissible: true,
+            });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        this.$toast.error("Form Harus Diisi", {
+          type: "error",
+          position: "top-right",
+          duration: 3000,
+          dismissible: true,
+        });
+      }
     },
   },
   mounted() {
