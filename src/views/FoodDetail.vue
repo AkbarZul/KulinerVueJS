@@ -88,14 +88,13 @@ export default {
     },
     pemesanan() {
       if (this.pesan.jumlah_pemesanan) {
-          // ini untuk push ke halaman keranjang
-          this.$router.push({ path: "/keranjang" })
-          // ini untuk membawa data dari product 
+        // ini untuk membawa data dari product
         this.pesan.products = this.products;
         axios
           .post("http://localhost:3000/keranjangs", this.pesan)
           .then(() => {
-            console.log("berhasil");
+            // ini untuk push ke halaman keranjang
+            this.$router.push({ path: "/keranjang" });
             this.$toast.success("Sukses Memesan", {
               type: "success",
               position: "top-right",
